@@ -18,6 +18,13 @@ images.
 - NASA API
 - AVWX API
 
+### Technologies and skills
+
+- SQL
+- Async programming
+- Self-hosting and servers
+
+
 ## WIP
 
 - SQL database to save user-specific settings
