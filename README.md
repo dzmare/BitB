@@ -1,7 +1,7 @@
 # BitB - the aviation weather bot for discord!
 
 This is a discord bot I am currently working on that serves my private discord server. Its purpose is to present METAR and TAF information to my users as well as optional weathercam
-images. 
+images.
 
 ## Libraries and APIs
 
@@ -10,6 +10,7 @@ images.
 - Discord.py
 - Asyncio
 - avwx-engine
+- SQLAlchemy
 
 ### APIs
 
@@ -26,4 +27,3 @@ images.
 
 - Argument parser
   - Simplify flag options, instead of maintaining a massive IF-ELSE block.
-
