@@ -9,7 +9,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
-auth = os.getenv('AUTH')
+avwx_token = os.getenv('AVWX_TOKEN')
 bot_token = os.getenv('BOT_TOKEN')
 nasa_api = os.getenv('NASA_API')
 windy_api = os.getenv('WINDY_API')
@@ -73,14 +73,14 @@ async def explain(ctx):
 async def get_wx(ctx, airport: to_upper, flags=None, radius=2):
 
     def get_metar(airport):
-        raw_metar = requests.get(f'{metar_url}{airport}?token={auth}').json()['raw']
+        raw_metar = requests.get(f'{metar_url}{airport}?token={avwx_token}').json()['raw']
         metar = avwx.Metar(airport)
         metar._update(raw_metar, dt.datetime.now(), False)
 
         return metar
 
     def get_taf(airport):
-        raw_taf = requests.get(f'{taf_url}{airport}?token={auth}').json()['raw']
+        raw_taf = requests.get(f'{taf_url}{airport}?token={avwx_token}').json()['raw']
         taf = avwx.Taf(airport)
         taf._update(raw_taf, dt.datetime.now(), False)
 
