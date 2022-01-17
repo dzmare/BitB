@@ -7,8 +7,11 @@ import os
 
 from discord.ext import commands
 from dotenv import load_dotenv
+import nest_asyncio
 
+nest_asyncio.apply()
 load_dotenv()
+
 avwx_token = os.getenv('AVWX_TOKEN')
 bot_token = os.getenv('BOT_TOKEN')
 nasa_api = os.getenv('NASA_API')
@@ -75,14 +78,14 @@ async def get_wx(ctx, airport: to_upper, flags=None, radius=2):
     def get_metar(airport):
         raw_metar = requests.get(f'{metar_url}{airport}?token={avwx_token}').json()['raw']
         metar = avwx.Metar(airport)
-        metar._update(raw_metar, dt.datetime.now(), False)
+        metar.update(raw_metar, dt.datetime.now(), False)
 
         return metar
 
     def get_taf(airport):
         raw_taf = requests.get(f'{taf_url}{airport}?token={avwx_token}').json()['raw']
         taf = avwx.Taf(airport)
-        taf._update(raw_taf, dt.datetime.now(), False)
+        taf.update(raw_taf, dt.datetime.now(), False)
 
         return taf
 
