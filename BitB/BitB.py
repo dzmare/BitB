@@ -78,14 +78,14 @@ async def get_wx(ctx, airport: to_upper, flags=None, radius=2):
     def get_metar(airport):
         raw_metar = requests.get(f'{metar_url}{airport}?token={avwx_token}').json()['raw']
         metar = avwx.Metar(airport)
-        metar.update(raw_metar, dt.datetime.now(), False)
+        metar.update()
 
         return metar
 
     def get_taf(airport):
         raw_taf = requests.get(f'{taf_url}{airport}?token={avwx_token}').json()['raw']
         taf = avwx.Taf(airport)
-        taf.update(raw_taf, dt.datetime.now(), False)
+        taf.update()
 
         return taf
 
